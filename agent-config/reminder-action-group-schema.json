@@ -1,0 +1,39 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Reminder API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/createReminder": {
+      "post": {
+        "description": "Create enrollment reminder",
+        "operationId": "createReminder",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "frequency_hours": {
+                    "type": "integer"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "required": ["frequency_hours", "email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Reminder created"
+          }
+        }
+      }
+    }
+  }
+}
