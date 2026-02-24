@@ -14,6 +14,10 @@ The system combines Retrieval-Augmented Generation (RAG), agentic workflows, and
 3. Automated enrollment reminder system
 4. Real-time conversational assistant
 
+### YouTube
+
+https://youtu.be/NEdqmnjVfKQ
+
 ### Problem Statement
 
 Students often struggle with:
@@ -155,7 +159,7 @@ Create Scheduled rules (legacy)
 Target -> created Lambda function
 
 Runs once in 3 days to trigger reminder.
-Cron expression -> 0 0 _/3 _ ? \*
+Cron expression -> (0 0 _/3 _ ? \*)
 
 #### 8. Streamlit UI Setup
 
@@ -182,7 +186,9 @@ streamlit run app.py
 ### References
 
 C04370v1 Master of Data Science and Innovation, 2024. UTS - CRICOS Provider No: 00099F. https://handbookpre2025.uts.edu.au/2024_1/courses/c04370.html.
+
 C04443v1 Master of Artificial Intelligence, 2024. UTS - CRICOS Provider No: 00099F. UTS: C04443v1 Master of Artificial Intelligence - Information Technology, UTS Handbook
+
 C04430v1 Master of Cybersecurity, 2024. UTS - CRICOS Provider No: 00099F. UTS: C04430v1 Master of Cybersecurity - Information Technology, UTS Handbook
 
-AWS Bedrock Agentic AI Starter Toolkit
+Agentic AI Starter Toolkit_v2.pdf
