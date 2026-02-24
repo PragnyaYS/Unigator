@@ -52,7 +52,7 @@ Unigator provides an Agentic AI workflow powered by a Bedrock Navigator Agent th
 
 ![architecture](docs/architecture.png)
 
-High-Level Workflow:
+#### High-Level Workflow:
 
 User -> UI
 
@@ -63,30 +63,28 @@ User -> UI
 
 ### Project Structure
 
+```text
 unigator/
-│── app.py
-│── requirements.txt
-│
+├── app.py                      # Main Streamlit/Application entry point
+├── requirements.txt            # Python dependencies
 ├── lambda/
-│ └── reminder_lambda.py
-│
+│   └── reminder_lambda.py      # AWS Lambda function for Agent Action Groups
 ├── agent-config/
-│ ├── navigator-agent-instructions.txt
-│ └── action-group-schema.json
-│
+│   ├── navigator-agent-instructions.txt  # System prompts for Bedrock Agent
+│   └── action-group-schema.json          # OpenAPI schema for Action Groups
 ├── data-sample/
-│ ├── degrees/
-│ │ └── degree_sample.md
-│ ├── subjects/
-│ │ └── subject_sample.md
-│
-├── docs/
-│ ├── architecture.png
-│ └── usecase.docx
+│   ├── degrees/
+│   │   └── degree_sample.md    # Knowledge base sample for degrees
+│   └── subjects/
+│       └── subject_sample.md   # Knowledge base sample for subjects
+└── docs/
+    ├── architecture.png        # Architecture diagram
+    └── usecase.docx            # Project documentation
+```
 
 ### Setup Instructions
 
-1. Upload Documents to S3
+#### 1. Upload Documents to S3
 
 Create an S3 bucket and upload subject handbook files.
 Configuration:
@@ -96,7 +94,7 @@ Configuration:
 - Versioning: Enabled
 - Encryption: SSE-S3
 
-2. Create Bedrock Knowledge Base
+#### 2. Create Bedrock Knowledge Base
 
 Configuration:
 
@@ -106,7 +104,7 @@ Configuration:
 
 _Sync documents and test retrieval using Bedrock console._
 
-3. Create Bedrock Agent
+#### 3. Create Bedrock Agent
 
 Configure agent (instructions) to:
 
@@ -123,7 +121,7 @@ Attach:
 
 _Create alias, prepare the agent and test._
 
-4. Lambda
+#### 4. Lambda
 
 Set environment variables:
 For SNS -
@@ -139,18 +137,18 @@ Grant permissions:
 
 Deploy the Lambda function code (lambda/reminder_lambda.py).
 
-5. DynamoDB Table
+#### 5. DynamoDB Table
 
 Used to store reminder ID and reminder frequency so the system can track scheduled notifications.
 
 - Partition Key: reminderId (String)
 
-6. SNS Topic
+#### 6. SNS Topic
 
 Create a standard Topic
 Subscribe to the Topic using Email protocol (or preferred protocol).
 
-7. EventBridge
+#### 7. EventBridge
 
 Create Scheduled rules (legacy)
 Target -> created Lambda function
@@ -158,7 +156,7 @@ Target -> created Lambda function
 Runs once in 3 days to trigger reminder.
 Cron expression -> 0 0 _/3 _ ? \*
 
-8. Streamlit UI Setup
+#### 8. Streamlit UI Setup
 
 Install dependencies
 

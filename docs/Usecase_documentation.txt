@@ -1,0 +1,24 @@
+Overview
+Study Navigator Agent is an agentic AI system built on Amazon Bedrock that helps international students navigate university degree structures, map subject choices to career goals, and automatically schedule enrollment reminders. It replaces manual, time-intensive handbook navigation with a conversational AI assistant grounded in official academic documents.
+
+Problem Context
+Students entering university programs face a compounding information problem. University handbooks are large, inconsistently structured, and written for administrative compliance rather than ease of use for students. They must simultaneously understand degree rules, prerequisite chains, elective options, availability, and career alignment - often without adequate advisory support. Student services teams, in turn, spend significant staff hours answering repetitive, low-complexity queries that could be automated.
+Existing chatbot solutions lack the institutional specificity to be useful. They cannot access official handbook data, enforce prerequisite logic, or take autonomous action on behalf of the student. This results in persistent confusion, suboptimal subject selection, and missed enrollment deadlines that are common due to unfamiliar academic systems and scheduling differences across countries.
+Application Overview
+Study Navigator addresses this through an agent and its action group operating within a single Bedrock-orchestrated workflow. The Study Navigator Agent handles academic guidance using Retrieval-Augmented Generation. When a student asks a career-oriented question - such as "I want to become a Machine Learning Engineer, what subjects should I take?" - the agent retrieves relevant degree and subject content from a structured S3-backed Knowledge Base, applies Amazon Titan Text Embeddings for semantic search via OpenSearch Serverless, and generates a grounded, personalised study pathway using the Amazon Nova Lite 1.0 model. US based Cross-Region guardrails ensure that all responses are traceable to source documents, which eliminates hallucinated subject names or fabricated prerequisites, which are common issues faced when general purpose LLMs are applied to institutional knowledge. Prompt attack protection is implemented through content filters.
+
+Once a student identifies their target subjects, the agent facilitates with the student’s reminder preferences, then invokes a Lambda function that writes reminder records to DynamoDB, schedules automated triggers via EventBridge, and delivers email notifications through SNS. This closes the loop from guidance to action without requiring the student to manage calendar entries manually.
+The student interacts with the agent through the AWS test chat interface, which maintains session context and routes queries to the appropriate agent path transparently.
+Business impact
+For students - 
+•	The system reduces time spent interpreting handbooks
+•	Provides clear career-to-subject mapping
+•	Ensures enrolment deadlines are not missed. 
+For universities - 
+•	Offers a scalable support layer that handles high-frequency, low-complexity advisory queries autonomously
+•	Reduces the administrative burden on student services staff without reducing service quality.
+
+The architecture is inherently scalable. The Knowledge Base can ingest documents from multiple university degrees, certifications, or professional frameworks without changes to the agent's logic. The reminder pipeline can be extended to support Google Calendar integration or SMS delivery with minimal additional Lambda configuration.
+
+What makes Unigator different?
+Unlike static FAQ systems or general chatbots, Unigator grounds every response in retrieved institutional documents, enforces the agent's instruction to never fabricate course information, and converts guidance into scheduled real-world action. The combination of RAG-based academic reasoning with event-driven automation represents the core architectural contribution of this project: an agent that not only advises but acts.
