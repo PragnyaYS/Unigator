@@ -26,10 +26,10 @@ Students often struggle with:
 
 #### AI & Knowledge Retrieval
 
-- Amazon Bedrock Agents
-- Knowledge Base for RAG
-- OpenSearch Serverless
-- S3 Data Storage
+- Amazon Bedrock Agents for orchestrating and managing the agent workflows
+- Knowledge Base for Retrieval Augemented Generation
+- OpenSearch Serverless for semantic search using Amazon Titan Text Embeddings
+- S3 Data Storage (degrees and subject details stored in markdown format)
 
 #### Serverless Automation
 
@@ -79,6 +79,7 @@ unigator/
 │       └── subject_sample.md   # Knowledge base sample for subjects
 └── docs/
     ├── architecture.png        # Architecture diagram
+    ├── demo.mp4                # Video demonstration of the Agent in action
     └── usecase.docx            # Project documentation
 ```
 
@@ -180,7 +181,8 @@ streamlit run app.py
 
 ### References
 
-UTS Handbook – Master of Data Science and Innovation
-https://handbookpre2025.uts.edu.au/2024_1/courses/c04370.html
+C04370v1 Master of Data Science and Innovation, 2024. UTS - CRICOS Provider No: 00099F. https://handbookpre2025.uts.edu.au/2024_1/courses/c04370.html.
+C04443v1 Master of Artificial Intelligence, 2024. UTS - CRICOS Provider No: 00099F. UTS: C04443v1 Master of Artificial Intelligence - Information Technology, UTS Handbook
+C04430v1 Master of Cybersecurity, 2024. UTS - CRICOS Provider No: 00099F. UTS: C04430v1 Master of Cybersecurity - Information Technology, UTS Handbook
 
 AWS Bedrock Agentic AI Starter Toolkit
